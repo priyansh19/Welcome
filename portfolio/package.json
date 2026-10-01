@@ -7,9 +7,9 @@
     "dev": "concurrently -k -n web,api \"vite\" \"node --watch server/index.mjs\"",
     "dev:web": "vite",
     "dev:api": "node --watch server/index.mjs",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p . && vite build",
     "start": "node server/index.mjs",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -p ."
   },
   "dependencies": {
     "lenis": "^1.3.26",

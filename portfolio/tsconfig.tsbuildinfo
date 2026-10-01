@@ -1,1 +1,0 @@
-{"root":["./src/App.tsx","./src/content.ts","./src/main.tsx","./src/agent/bus.ts","./src/agent/fallback.ts","./src/agent/useAgent.ts","./src/agent/voice.ts","./src/components/Agent.tsx","./src/components/Overlays.tsx","./src/components/ParticleField.tsx","./src/components/ProjectModal.tsx","./src/components/Sections.tsx","./src/components/fx.tsx"],"version":"5.9.3"}
