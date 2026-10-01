@@ -1,0 +1,68 @@
+{
+  "_note": "Edit this file to make the site yours. The chat and voice agent read the same file, so whatever is here is what the agent knows.",
+  "name": "Priyansh",
+  "role": "AI Engineer & Full-Stack Developer",
+  "tagline": "I build intelligent systems that feel alive.",
+  "location": "Earth, UTC+5:30",
+  "email": "hello@example.com",
+  "socials": [
+    { "label": "GitHub", "url": "https://github.com/priyansh19" },
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/" },
+    { "label": "X", "url": "https://x.com/" }
+  ],
+  "about": "I design and ship AI-powered products end to end, from model selection and retrieval pipelines to the interfaces people actually touch. I care about systems that are fast, private and a little bit magical. This portfolio runs its own language, speech-to-text and text-to-speech models, so nothing you say here leaves the server.",
+  "stats": [
+    { "value": 5, "suffix": "+", "label": "Years building" },
+    { "value": 30, "suffix": "+", "label": "Projects shipped" },
+    { "value": 100, "suffix": "%", "label": "Self-hosted AI" }
+  ],
+  "skills": [
+    { "group": "AI / ML", "items": ["LLMs", "RAG", "Agents", "Speech (STT/TTS)", "PyTorch", "Ollama", "LangChain"] },
+    { "group": "Frontend", "items": ["React", "TypeScript", "Three.js", "WebGL", "Motion", "Tailwind"] },
+    { "group": "Backend", "items": ["Node.js", "Python", "FastAPI", "PostgreSQL", "Redis", "WebSockets"] },
+    { "group": "Infra", "items": ["Docker", "Kubernetes", "GitHub Actions", "Linux", "GPU serving"] }
+  ],
+  "projects": [
+    {
+      "id": "voice-agent",
+      "title": "Self-Hosted Voice Agent",
+      "year": "2026",
+      "summary": "Real-time voice assistant with on-prem Whisper, a local LLM and neural TTS. Sub-second turn latency, no cloud calls.",
+      "tags": ["Whisper", "Ollama", "Kokoro TTS", "WebAudio"],
+      "url": "https://github.com/priyansh19",
+      "color": "#7c5cff"
+    },
+    {
+      "id": "rag-engine",
+      "title": "Knowledge RAG Engine",
+      "year": "2025",
+      "summary": "Hybrid vector + keyword retrieval over company docs with citations and evaluation dashboards.",
+      "tags": ["RAG", "pgvector", "FastAPI", "Evals"],
+      "url": "https://github.com/priyansh19",
+      "color": "#00e5ff"
+    },
+    {
+      "id": "agent-os",
+      "title": "Agent Orchestrator",
+      "year": "2025",
+      "summary": "Multi-agent workflow runner with tool calling, memory and a live graph view of every step.",
+      "tags": ["Agents", "Tool use", "React Flow", "Redis"],
+      "url": "https://github.com/priyansh19",
+      "color": "#ff3d81"
+    },
+    {
+      "id": "this-site",
+      "title": "This Portfolio",
+      "year": "2026",
+      "summary": "WebGL particle hero, scroll-driven transitions and an AI that can drive the page for you. Ask it to show you around.",
+      "tags": ["Three.js", "Motion", "Lenis", "Local LLM"],
+      "url": "https://github.com/priyansh19/Welcome",
+      "color": "#c6ff3d"
+    }
+  ],
+  "experience": [
+    { "period": "2024 — Now", "title": "AI Engineer", "org": "Your Company", "detail": "Leading LLM and voice products from prototype to production." },
+    { "period": "2022 — 2024", "title": "Full-Stack Developer", "org": "Previous Company", "detail": "Built real-time dashboards and data platforms used by thousands." },
+    { "period": "2020 — 2022", "title": "Software Engineer", "org": "First Company", "detail": "Shipped web apps, APIs and the first ML features." }
+  ]
+}
