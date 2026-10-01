@@ -1,0 +1,59 @@
+# Everything self-hosted: the site + API, a local LLM (Ollama) and speech (Speaches:
+# faster-whisper for STT, Kokoro for TTS). `docker compose up -d` then open :8787.
+# For an NVIDIA GPU, uncomment the `deploy` blocks and use speaches' `latest-cuda` tag.
+services:
+  web:
+    build: .
+    ports: ["8787:8787"]
+    environment:
+      LLM_BASE_URL: http://ollama:11434/v1
+      LLM_MODEL: ${LLM_MODEL:-llama3.2:3b}
+      SPEECH_BASE_URL: http://speaches:8000/v1
+      STT_MODEL: ${STT_MODEL:-Systran/faster-whisper-small}
+      TTS_MODEL: ${TTS_MODEL:-speaches-ai/Kokoro-82M-v1.0-ONNX}
+      TTS_VOICE: ${TTS_VOICE:-af_heart}
+    depends_on: [ollama, speaches]
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes: [ollama:/root/.ollama]
+    restart: unless-stopped
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  # One-shot: pull the chat model into the ollama volume.
+  ollama-pull:
+    image: ollama/ollama:latest
+    environment: { OLLAMA_HOST: "ollama:11434" }
+    entrypoint: ["/bin/sh", "-c", "sleep 3 && ollama pull ${LLM_MODEL:-llama3.2:3b}"]
+    depends_on: [ollama]
+    restart: "no"
+
+  speaches:
+    image: ghcr.io/speaches-ai/speaches:latest-cpu
+    volumes: [hf-cache:/home/ubuntu/.cache/huggingface/hub]
+    restart: unless-stopped
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices: [{ driver: nvidia, count: all, capabilities: [gpu] }]
+
+  # One-shot: download the STT and TTS models into the speaches cache.
+  speaches-pull:
+    image: curlimages/curl:latest
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        until curl -sf http://speaches:8000/health; do sleep 2; done
+        curl -sf -X POST "http://speaches:8000/v1/models/${STT_MODEL:-Systran/faster-whisper-small}"
+        curl -sf -X POST "http://speaches:8000/v1/models/${TTS_MODEL:-speaches-ai/Kokoro-82M-v1.0-ONNX}"
+    depends_on: [speaches]
+    restart: "no"
+
+volumes:
+  ollama:
+  hf-cache:
